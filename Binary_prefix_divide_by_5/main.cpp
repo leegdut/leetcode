@@ -17,6 +17,7 @@ public:
         {
             tmp = tmp<<1;
             tmp = tmp + A[i];
+            tmp  = tmp % 10;        //only need to check the gewei is 5 or not
             res.push_back(!(tmp%5));
         }
         return res;
@@ -27,7 +28,7 @@ public:
 int main()
 {
     cout << "test!" << endl;
-    int v[] = {0,1,1};
+    int v[] = {1,0,0,1,0,1,0,0,1,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,0,1,0,0,0,0,1,1,0,1,0,0,0,1};
     vector<int> a(v,v+(sizeof(v)/sizeof(int)));
     Solution test;
     vector<bool> res = test.prefixesDivBy5(a);
