@@ -21,31 +21,16 @@ public:
         for(map<int,vector<int>>::iterator iter = record.begin();iter->first <=30;iter++)
         {
             if(iter->first !=30 && iter->first !=0)
-            {counter += record[iter->first].size() * record[(60-iter->first)].size();}
+            {counter += record[iter->first].size() * record[(60-iter->first)].size();
+            }
             else
             {
-                int n =record[iter->first].size();      //C(n,m)=P(n,m)/P(m,m) =n!/m!（n-m）!
-                if(n > 1)
-                    counter += fact(n)/(2*fact(n-2));
+                counter += (record[iter->first].size() * (record[iter->first].size()-1))/2;
             }
         }
 
         return counter;
     }
-
-
-    int fact(int n)
-    {
-        if(n <= 1)
-        {
-            return 1;
-        }
-        else
-        {
-            return n * fact(n-1);
-        }
-    }
-
 };
 
 
