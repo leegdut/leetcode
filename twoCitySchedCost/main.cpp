@@ -1,32 +1,44 @@
 #include <iostream>
 #include <vector>
-#include <map>
-
+#include <algorithm>
 using namespace std;
+
+//学习使用sort的第三参数，函数
 
 class Solution {
 public:
     int twoCitySchedCost(vector<vector<int>>& costs) {
-        map<int,vector<int>>m_res;
-        int counter=0;
         int res = 0;
-        for(int i = 0;i<costs.size();i++)
-        {
-            m_res[costs[i][0] - costs[i][1]] = costs[i];
-        }
-        for(map<int,vector<int>>::iterator iter=m_res.begin();iter != m_res.end();iter++)
-        {
-            if(counter < m_res.size()/2)
+//        sort(costs.begin(),costs.end(),compp);        //this one is ok try to use lambda
+        sort(costs.begin(),costs.end(),[](vector<int> A,vector<int> B){        if(A[0]-A[1] < B[0]-B[1])
             {
-                res += iter->second[0];
+                return true;
             }
             else {
-                res += iter->second[1];
+                return false;
+            }});                          //format [](parameter){}  no need ;
+        for(int i = 0;i<costs.size();i++)
+        {
+            if(i<costs.size()/2)
+                res += costs[i][0];
+            else {
+                res += costs[i][1];
             }
-            counter++;
         }
         return res;
     }
+
+//    static bool compp(vector<int> A,vector<int> B)      //have to use static ??
+//    {
+//        if(A[0]-A[1] < B[0]-B[1])
+//        {
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
+//    }
+
 };
 
 
