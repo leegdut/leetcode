@@ -9,14 +9,14 @@ class Solution {
 public:
     int twoCitySchedCost(vector<vector<int>>& costs) {
         int res = 0;
-//        sort(costs.begin(),costs.end(),compp);        //this one is ok try to use lambda
-        sort(costs.begin(),costs.end(),[](vector<int> A,vector<int> B){        if(A[0]-A[1] < B[0]-B[1])
+        sort(costs.begin(),costs.end(),compp);        //this one is ok try to use lambda
+/*        sort(costs.begin(),costs.end(),[](vector<int> A,vector<int> B){        if(A[0]-A[1] < B[0]-B[1])
             {
                 return true;
             }
             else {
                 return false;
-            }});                          //format [](parameter){}  no need ;
+            }}); */                         //format [](parameter){}  no need ;
         for(int i = 0;i<costs.size();i++)
         {
             if(i<costs.size()/2)
@@ -28,8 +28,8 @@ public:
         return res;
     }
 
-//    static bool compp(vector<int> A,vector<int> B)      //have to use static ??
-//    {
+    static bool compp(vector<int> A,vector<int> B)      //have to use static ??
+    {
 //        if(A[0]-A[1] < B[0]-B[1])
 //        {
 //            return true;
@@ -37,7 +37,8 @@ public:
 //        else {
 //            return false;
 //        }
-//    }
+        return (A[0]-A[1] < B[0]-B[1]);
+    }
 
 };
 
