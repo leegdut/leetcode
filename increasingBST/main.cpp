@@ -13,13 +13,30 @@ struct TreeNode {
 
 class Solution {
 public:
+    vector<TreeNode *> res;
+
     TreeNode* increasingBST(TreeNode* root) {
+        inordertra(root);
+    for(int i = 0;i<res.size()-1;i++)
+    {
+        res[i]->left = NULL;
+        res[i]->right = res[i+1];
+    }
+        res[res.size()-1]->left=NULL;
+        res[res.size()-1]->right = NULL;
+//        return res;
+        return res[0];
+}
+
+    TreeNode* inordertra(TreeNode* root) {
     if(root == NULL)
         return NULL;
 
-     increasingBST(root->left);      //keep run to lefest the output the root
-     cout<<"  "<<root->val<<endl;
-     increasingBST(root->right);
+     inordertra(root->left);      //keep run to lefest the output the root
+//     cout<<"  "<<root->val<<endl;
+     res.push_back(root);
+     inordertra(root->right);
+     return NULL;
     }
 
 
@@ -43,7 +60,6 @@ int main()
         vector<TreeNode*> tmp;
 //        for(int i=0;i<pow(2,total_res.size());i++)       //before have build n floor,next to build n+1 floor
 //        {
-            cout<<total_res.size();
             for(int j =0;j < total_res[total_res.size()-1].size();j++)
             {
                 TreeNode* tmp_root;
@@ -81,8 +97,6 @@ int main()
 
         total_res.push_back(tmp);
     }
-
-    cout<<"here"<<endl;
 
     for(int i = 0;i< total_res.size()-1;i++)
     {
