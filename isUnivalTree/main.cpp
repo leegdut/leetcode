@@ -11,23 +11,23 @@ struct TreeNode {
 
 
 class Solution {
-    bool res = 1;
+//    bool res = 1;
 public:
     bool isUnivalTree(TreeNode* root) {
-        traversal(root,root->val);
-        return res;
+       return traversal(root,root->val);
+//        return res;
     }
 
-    void traversal(TreeNode * root,int val)
+    bool traversal(TreeNode * root,int val)
     {
         if(root == NULL)
-            return;
+            return true;
         if(root->val == val)
         {
-            traversal(root->left,val);
-            traversal(root->right,val);
+            return traversal(root->left,val)&&traversal(root->right,val);
+;
         }else {
-            res = 0;
+            return false;
         }
     }
 };
@@ -43,7 +43,7 @@ int main()
     TreeNode *l11 =new TreeNode(1);
     TreeNode *l12 =new TreeNode(1);
     TreeNode *r11 =new TreeNode(1);
-    TreeNode *r12 =new TreeNode(0);
+    TreeNode *r12 =new TreeNode(1);
 
 
     root->left = l1;
