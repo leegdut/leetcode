@@ -8,7 +8,7 @@ struct TreeNode {
      int val;
      TreeNode *left;
      TreeNode *right;
-     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+      TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
 class Solution {
@@ -16,16 +16,10 @@ public:
     TreeNode* increasingBST(TreeNode* root) {
     if(root == NULL)
         return NULL;
-//    if(root->left != NULL)
 
-//    if(root->left != NULL)
-        increasingBST(root->left);      //keep run to lefest the output the root
-
+     increasingBST(root->left);      //keep run to lefest the output the root
      cout<<"  "<<root->val<<endl;
-
-//    if(root->right != NULL)
      increasingBST(root->right);
-
     }
 
 
@@ -47,20 +41,44 @@ int main()
     while(counter < sizeof(num)/sizeof(int))
     {
         vector<TreeNode*> tmp;
-        for(int i=0;i<2*total_res.size();i++)       //before have build n floor,next to build n+1 floor
-        {
-            if(num[counter] != NULL)
+//        for(int i=0;i<pow(2,total_res.size());i++)       //before have build n floor,next to build n+1 floor
+//        {
+            cout<<total_res.size();
+            for(int j =0;j < total_res[total_res.size()-1].size();j++)
             {
-                TreeNode* tmp_root = new TreeNode(num[counter]);
-                counter++;
-                tmp.push_back(tmp_root);
+                TreeNode* tmp_root;
+                if(total_res[total_res.size()-1][j] != NULL)
+                {
+                    if(num[counter] != NULL)
+                    {
+                        tmp_root = new TreeNode(num[counter]);
+                        counter++;
+                        tmp.push_back(tmp_root);
+                    }
+                    else {
+                        tmp_root = NULL;
+                        counter++;
+                        tmp.push_back(tmp_root);
+                    }
+                    if(num[counter] != NULL)
+                    {
+                        tmp_root = new TreeNode(num[counter]);
+                        counter++;
+                        tmp.push_back(tmp_root);
+                    }
+                    else {
+                        tmp_root = NULL;
+                        counter++;
+                        tmp.push_back(tmp_root);
+                    }
+                }else{
+                     tmp_root = NULL;
+                     tmp.push_back(tmp_root);
+                     tmp.push_back(tmp_root);
+                }
+
             }
-            else {
-                TreeNode* tmp_root = NULL;
-                counter++;
-                tmp.push_back(tmp_root);
-            }
-        }
+
         total_res.push_back(tmp);
     }
 
