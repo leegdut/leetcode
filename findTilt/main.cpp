@@ -44,7 +44,7 @@ public:
 
 
 
-class Solution {
+class Solution {ll
 public:
     int ans=0;
     int findTilt(TreeNode* root) {
