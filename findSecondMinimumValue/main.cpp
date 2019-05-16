@@ -19,7 +19,6 @@ public:
             return -1;
         else {
             set<int>::iterator iter = res.begin();
-//            iter--;
             return *(++iter);
         }
     }
