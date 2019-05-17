@@ -6,13 +6,16 @@ using namespace std;
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        for(vector<int>::iterator iter= nums.begin()+1;iter != nums.end();)
+        if(nums.size() != 0)
         {
-            if(*iter == *(iter-1))
+            for(vector<int>::iterator iter= nums.begin()+1;iter != nums.end();)
             {
-                iter = nums.erase(iter);
-            }else {
-                iter++;
+                if(*iter == *(iter-1))
+                {
+                    iter = nums.erase(iter);
+                }else {
+                    iter++;
+                }
             }
         }
         return nums.size();
